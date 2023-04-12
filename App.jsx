@@ -21,6 +21,7 @@ function App() {
   const [message, setMessage] = useState('');
   const [id, setId] = useState('');
   const [name, setName] = useState('');
+  
   const updateData = async () => {
     let data = JSON.stringify({
       Device : {
@@ -28,16 +29,16 @@ function App() {
       }
     });
     let credentials = abab.btoa("hpt.admin:hpthnadmin");
-    let auth = { 
+    let headers = { 
       "Authorization": `Basic ${credentials}`,
       "Content-Type" : "application/json",
       "Content-Length" : `${data.length}`,
-      "Host" : "10.4.18.52:13081"
+      "Host" : "10.4.18.42:13081"
     };
     try {
-      const res = await fetch(`http://10.4.18.52:13081/SM/9/rest/devices/${id}`,
+      const res = await fetch(`http://10.4.18.42:13081/SM/9/rest/devices/${id}`,
         {
-          headers: auth,
+          headers: headers,
           method: 'PUT',
           body: data
         });
