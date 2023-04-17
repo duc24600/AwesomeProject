@@ -1,11 +1,3 @@
-/* eslint-disable prettier/prettier */
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React, { useState } from "react"
 import {
   StyleSheet,
@@ -16,7 +8,7 @@ import {
 } from "react-native"
 import abab from "abab"
 
-function App() {
+function Liquidations() {
   const [message, setMessage] = useState('');
   const [id, setId] = useState('');
   const [status, setStatus] = useState('');
@@ -99,4 +91,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default App
+export default Liquidations
