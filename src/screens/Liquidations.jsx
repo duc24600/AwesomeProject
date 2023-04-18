@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import {
   StyleSheet,
   Text,
@@ -6,45 +6,29 @@ import {
   TouchableOpacity,
   View
 } from "react-native"
-import abab from "abab"
+import Liquidation from "../api/liquidations";
 
 function Liquidations() {
   const [message, setMessage] = useState('');
   const [id, setId] = useState('');
   const [status, setStatus] = useState('');
   const [phase, setPhase] = useState('');
-  const updateData = async () => {
-    let data = JSON.stringify({
-      Liquidation: {
-        //        DisplayName : name
+  const [obj, setObj] = useState({});
+  //const [data, setData] = useState({});
+
+  const onPress = async () => {
+    setObj({
+      collectionName: 'liquidations',
+      id: id,
+      reqBody: {
+        Liquidation: {
+          CurrentPhase: phase,
+          Status: status
+        }
       }
     });
-    let credentials = abab.btoa("hpt.admin:hpthnadmin");
-    let headers = {
-      "Authorization": `Basic ${credentials}`,
-      "Content-Type": "application/json",
-      "Content-Length": `${data.length}`,
-      "Host": `10.4.18.42:13081`
-    };
-    try {
-      const res = await fetch(`http://10.4.18.42:13081/SM/9/rest/liquidations/${id}/action/Resolve`,
-        {
-          headers: headers,
-          method: 'POST',
-          body: data
-        });
-      const json = await res.json();
-      setMessage(json.Messages[0]);
-      setStatus(json.Liquidation.Status);
-      setPhase(json.Liquidation.CurrentPhase);
-    } catch (error) {
-      console.log(error);
-      setMessage("Update failed!");
-    }
-  };
-
-  onPress = () => {
-    updateData();
+    const response = await Liquidation.update(obj);
+    setMessage(response.Messages[0]);
   };
 
   return (
@@ -57,12 +41,16 @@ function Liquidations() {
           onChangeText={setId} />
         <TextInput
           style={styles.input}
-          value={status} />
+          placeholder="Input Status"
+          value={status}
+          onChangeText={setStatus} />
         <TextInput
           style={styles.input}
-          value={phase} />
+          placeholder="Input Phase"
+          value={phase}
+          onChangeText={setPhase} />
       </View>
-      <TouchableOpacity style={styles.button} onPress={this.onPress}>
+      <TouchableOpacity style={styles.button} onPress={onPress}>
         <Text>Update</Text>
       </TouchableOpacity>
       <View>
