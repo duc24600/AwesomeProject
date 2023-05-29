@@ -12,7 +12,7 @@ import {
   View
 } from "react-native"
 import { NavigationContainer } from "@react-navigation/native";
-import Liquidations from "./screens/Liquidations";
+//import Liquidations from "./screens/Liquidations";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 function App() {
@@ -24,12 +24,20 @@ function App() {
     );
   }
 
+  function HomeScreen() {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Home Screen!</Text>
+      </View>
+    );
+  }
+
   const Tab = createBottomTabNavigator();
 
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={Liquidations} />
+        <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
