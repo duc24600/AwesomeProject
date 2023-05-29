@@ -48,7 +48,7 @@ const doAction = async (obj) => {
 const doPut = async (obj) => {
     let url = BASE_ENDPOINT + `/${obj.collectionName}/${obj.id}`;
     let body = obj.reqBody;
-    return await axios.post(url, { headers: authPostHeader(body.length) }, body)
+    return await axios.put(url, { headers: authPostHeader(body.length) }, body)
         .then((respone) => {
             return respone.data;
         })
@@ -60,7 +60,7 @@ const doPut = async (obj) => {
 function errorHandle(error) {
     const errorData = {
         Messages: [
-            "There was some error, please check the system log."
+            "There were some errors, please check the system log."
         ]
     }
     if (error.response) {
