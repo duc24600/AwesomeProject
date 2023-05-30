@@ -1,0 +1,21 @@
+.container {
+    flex: 1;
+    justify-content: center;
+    align-items: stretch;
+
+    .sub-container {
+        .input {
+            height: 40;
+            margin: 12;
+            border-width: 1;
+            padding: 10;
+        }
+    }
+
+    .button {
+        align-items: center;
+        background-color: #DDDDDD;
+        padding: 10;
+        margin-bottom: 10;
+    }
+}

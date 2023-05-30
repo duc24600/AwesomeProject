@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import "./liquidations.scss"
 import {
   StyleSheet,
   Text,
@@ -32,51 +33,51 @@ function Liquidations() {
   };
 
   return (
-    <View style={styles.container}>
-      <View>
-        <TextInput
-          style={styles.input}
+    <View class="container">
+      <View class="sub-container">
+        <TextInput 
+          class="input"
           placeholder="Input ID"
           value={id}
           onChangeText={setId} />
         <TextInput
-          style={styles.input}
+          class="input"
           placeholder="Input Status"
           value={status}
           onChangeText={setStatus} />
         <TextInput
-          style={styles.input}
+          class="input"
           placeholder="Input Phase"
           value={phase}
           onChangeText={setPhase} />
       </View>
-      <TouchableOpacity style={styles.button} onPress={onPress}>
+      <TouchableOpacity class="button" onPress={onPress}>
         <Text>Update</Text>
       </TouchableOpacity>
-      <View>
+      <View class="sub-container">
         <Text>{message}</Text>
       </View>
     </View>
   )
 }
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "stretch"
-  },
-  button: {
-    alignItems: "center",
-    backgroundColor: '#DDDDDD',
-    padding: 10,
-    marginBottom: 10,
-  }
-})
+// const styles = StyleSheet.create({
+//   input: {
+//     height: 40,
+//     margin: 12,
+//     borderWidth: 1,
+//     padding: 10,
+//   },
+//   container: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "stretch"
+//   },
+//   button: {
+//     alignItems: "center",
+//     backgroundColor: '#DDDDDD',
+//     padding: 10,
+//     marginBottom: 10,
+//   }
+// })
 
 export default Liquidations
