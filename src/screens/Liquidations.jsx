@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import "./liquidations.scss"
 import {
   StyleSheet,
   Text,
@@ -15,7 +14,6 @@ function Liquidations() {
   const [status, setStatus] = useState('');
   const [phase, setPhase] = useState('');
   const [obj, setObj] = useState({});
-  //const [data, setData] = useState({});
 
   const onPress = async () => {
     setObj({
@@ -33,51 +31,51 @@ function Liquidations() {
   };
 
   return (
-    <View class="container">
-      <View class="sub-container">
+    <View style={styles.container}>
+      <View>
         <TextInput 
-          class="input"
+          style={styles.input}
           placeholder="Input ID"
           value={id}
           onChangeText={setId} />
         <TextInput
-          class="input"
+          style={styles.input}
           placeholder="Input Status"
           value={status}
           onChangeText={setStatus} />
         <TextInput
-          class="input"
+          style={styles.input}
           placeholder="Input Phase"
           value={phase}
           onChangeText={setPhase} />
       </View>
-      <TouchableOpacity class="button" onPress={onPress}>
+      <TouchableOpacity style={styles.button} onPress={onPress}>
         <Text>Update</Text>
       </TouchableOpacity>
-      <View class="sub-container">
+      <View>
         <Text>{message}</Text>
       </View>
     </View>
   )
 }
-// const styles = StyleSheet.create({
-//   input: {
-//     height: 40,
-//     margin: 12,
-//     borderWidth: 1,
-//     padding: 10,
-//   },
-//   container: {
-//     flex: 1,
-//     justifyContent: "center",
-//     alignItems: "stretch"
-//   },
-//   button: {
-//     alignItems: "center",
-//     backgroundColor: '#DDDDDD',
-//     padding: 10,
-//     marginBottom: 10,
-//   }
-// })
+const styles = StyleSheet.create({
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+  },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "stretch"
+  },
+  button: {
+    alignItems: "center",
+    backgroundColor: '#DDDDDD',
+    padding: 10,
+    marginBottom: 10,
+  }
+})
 
 export default Liquidations
