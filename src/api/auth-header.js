@@ -1,8 +1,9 @@
 import {btoa} from 'abab';
 import Config from 'react-native-config';
-//const credentials = btoa('hpt.admin:hpthnadmin');
-const credentials = btoa(Config.REACT_APP_CREDENTIALS);
-const host = Config.REACT_APP_SM_HOST;
+const credentials = btoa('hpt.admin:hpthnadmin');
+//const credentials = btoa(Config.REACT_APP_CREDENTIALS);
+//const host = Config.REACT_APP_SM_HOST;
+const host = '10.4.18.42:13081';
 export function authPostHeader(length) {
   const headers = {
     'Authorization': `Basic ${credentials}`,

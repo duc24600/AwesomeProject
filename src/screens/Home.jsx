@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View } from "react-native/types";
+import { StyleSheet, Text, View } from "react-native";
 
 function Home() {
     return (
         <View style={style.container}>
             <Text>Settings Screen</Text>
         </View>
-    );
+    );s
 }
 
 const style = StyleSheet.create({

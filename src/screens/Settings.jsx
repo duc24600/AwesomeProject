@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native/types";
+import { StyleSheet, Text, View } from "react-native";
 
 function Settings() {
     return (

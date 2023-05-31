@@ -1,8 +1,8 @@
 import axios from "axios";
 import { authGetHeader, authPostHeader } from "./auth-header";
 import Config from "react-native-config";
-//const BASE_ENDPOINT = 'http://10.4.18.42:13081/SM/9/rest';
-const BASE_ENDPOINT = Config.REACT_APP_SM_BASE_URL;
+const BASE_ENDPOINT = 'http://10.4.18.42:13081/SM/9/rest';
+//const BASE_ENDPOINT = Config.REACT_APP_SM_BASE_URL;
 console.log(BASE_ENDPOINT);
 const doGetById = async (obj) => {
     let url = BASE_ENDPOINT + `/${obj.collectionName}/${obj.id}`;
