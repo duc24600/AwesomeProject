@@ -1,8 +1,9 @@
 import axios from "axios";
 import { authGetHeader, authPostHeader } from "./auth-header";
-
-const BASE_ENDPOINT = 'http://10.4.18.42:13081/SM/9/rest';
-
+import Config from "react-native-config";
+//const BASE_ENDPOINT = 'http://10.4.18.42:13081/SM/9/rest';
+const BASE_ENDPOINT = Config.REACT_APP_SM_BASE_URL;
+console.log(BASE_ENDPOINT);
 const doGetById = async (obj) => {
     let url = BASE_ENDPOINT + `/${obj.collectionName}/${obj.id}`;
     return axios.get(url, { headers: authGetHeader })
@@ -47,8 +48,11 @@ const doAction = async (obj) => {
 
 const doPut = async (obj) => {
     let url = BASE_ENDPOINT + `/${obj.collectionName}/${obj.id}`;
+    console.log(url);
     let body = obj.reqBody;
-    return await axios.put(url, { headers: authPostHeader(body.length) }, body)
+    let length = body?JSON.stringify(body).length:0;
+    console.log(length);
+    return await axios.put(url, body, { headers: authPostHeader(length) })
         .then((respone) => {
             return respone.data;
         })

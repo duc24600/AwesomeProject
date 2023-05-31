@@ -14,32 +14,18 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import Liquidations from "./screens/Liquidations";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Settings from "./screens/Settings";
+import Home from "./screens/Home";
 
 function App() {
-  function SettingsScreen() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Settings!</Text>
-      </View>
-    );
-  }
-
-  function HomeScreen() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Home Screen!</Text>
-      </View>
-    );
-  }
-
   const Tab = createBottomTabNavigator();
 
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Liquidations" component={Liquidations}/>
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen name="Settings" component={Settings} />
       </Tab.Navigator>
     </NavigationContainer>
   );
